@@ -80,20 +80,23 @@
             left: 10%;
         }
         .tile{
-            border-style: solid;
-            border-color: white;
             flex: 1;
             height: 100%;
+            background-color: white;
+            isolation: isolate;
+        }
+        .tile::before{
+            background-color: #3e3eb7;
+            inset: 2px;
+            content: '';
+            position: absolute;
+            z-index: -1;
         }
         .codingLanguages{
-            border-width: 2px 0px 2px 2px;
+            clip-path: polygon(0 0, 100% 0, 55% 100%, 0% 100%);
         }
         .programs{
-            border-width: 2px 2px 2px 0px;
-        }
-        .programsSection{
-            position: relative;
-            margin: 50px 0px 50px 0px;
+            clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
         }
         searchTile{
             display: inline-block;
@@ -144,9 +147,6 @@
                     <li>JavaScript</li>
                 </ul>
             </div>
-            <svg class="diagonalBorder">
-                
-            </svg>
             <div class="programs tile">
                 <h3>Programs and Frameworks</h3>
                 <ul>
