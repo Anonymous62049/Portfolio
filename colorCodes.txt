@@ -1,4 +1,0 @@
-Dark Blue: #151726
-Yellow: #FFF459
-Light Blue: #60DAF0
-Purple: #661CBA
