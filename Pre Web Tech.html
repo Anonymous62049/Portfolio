@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Jayden Lynch</title>
+    <style>
+        .titleImage {
+            width: 100%;
+            max-width: 700px;
+            min-width: 600px;
+            opacity: 0.1;
+            background-color: var(--background);
+        }
+        .home {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        @font-face {
+            font-family: BebasKai;
+            src: url('/bebas_kai/BebasKai.ttf') format('truetype');
+        }
+        body {
+            background-color: var(--background);
+            color: white;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-family: BebasKai;
+            font-size: 10vw;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        h2 {
+            font-family: BebasKai;
+            font-size: 20pt;
+        }
+        h3 {
+            font-family: BebasKai;
+            font-size: 15pt;
+        }
+        a {
+            font-family: BebasKai;
+            font-size: 14pt;
+        }
+        .item {
+            display: inline-block;
+            margin: 0 15px 0 0;
+            transition: all 0.2s;
+        }
+        .item a{
+            color: inherit;
+            text-decoration: none;
+        }
+        .menuItems{
+            list-style-type: none;
+            margin: 0 0 0 5px;
+            padding: 0;
+        }
+        .mobileMenuContainer{
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+        .iconContainer{
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .iconContainer img{
+            width: 50%;
+            object-fit: contain;
+        }
+        @media (max-width: 500px) {
+            .item{
+                display: block;
+            }
+            .mobileMenuContainer{
+                background-color: white;
+                color: black;
+                text-align: left;
+                width: 90%;
+                padding: 10px;
+                height: 100vh;
+                position: absolute;
+                z-index: 1;
+                display: none;
+            }
+            .headerIconContainer{
+                display: flex !important;
+            }
+            .menuItems{
+                margin-top: 30px;
+            }
+            .logo{
+                display: none;
+            }
+        }
+        .item:hover{
+            color: var(--lightBlue)
+        }
+    </style>
+</head>
+<body>
+    <nav class="header" style="text-align: center">
+        <div class="headerIconContainer iconContainer" style="width: 40px; display: none; margin: 5px;">
+            <img src="/Images/menuIcon.png">
+        </div>
+        <a style="color: #6d6d6d; line-height: 4" class="logo">JAYDENLYNCH</a>
+        <div class="mobileMenuContainer">
+            <div class="headerIconContainer iconContainer" style="width: 30px; display: none;">
+                <img src="/Images/closeIcon.png">
+            </div>
+            <ul class="menuItems">
+                <li class="item"><a href="/index.html">Home</a></li>
+                <li class="item"><a>Skills</a></li>
+                <li class="item"><a>Projects</a></li>
+                <li class="item"><a>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="home">
+        <img src="Images/titleImage.png" class="titleImage">
+        <div class="title-container">
+            <h1 style="color: var(--lightBlue)">JAYDEN</h1>
+            <h1 style="color: var(--orange)">Lynch</h1>
+        </div>
+    </section>
+</body>
+</html>
