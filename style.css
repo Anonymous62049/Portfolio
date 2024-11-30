@@ -6,7 +6,7 @@
 }
 @font-face {
     font-family: BebasKai;
-    src: url('/bebas_kai/BebasKai.ttf') format('truetype');
+    src: url('./bebas_kai/BebasKai.ttf') format('truetype');
 }
 body {
     background-color: var(--background);
