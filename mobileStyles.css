@@ -31,4 +31,7 @@
     header h1{
         font-size: 15vw;
     }
+    a{
+        font-size: 3.5vh;
+    }
 }

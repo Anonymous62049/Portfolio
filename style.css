@@ -30,7 +30,7 @@ h3 {
 }
 a {
     font-family: BebasKai;
-    font-size: 14pt;
+    font-size: 2.5vh;
 }
 nav{
     overflow: hidden;
@@ -40,6 +40,8 @@ nav{
 }
 nav .hamburger {
     display: none;
+    width: 30px;
+    height: 30px;
 }
 nav > div{
     transition: background-color 0.4s ease-in-out;
@@ -68,26 +70,26 @@ nav .switch li:hover{
     color: var(--background);
 }
 .hamburger .line{
-    width: 20px;
-    height: 3px;
+    width: 30px;
+    height: 5px;
     background-color: white;
     border-radius: 3px;
     transition: all 0.4s ease-in-out;
 }
 .hamburger .top, .hamburger .middle{
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 nav .switch .hamburger .line{
     background-color: var(--background);
 }
 nav .switch .hamburger .top{
-    transform: rotate(-45deg) translate(-6px, 4px);
+    transform: rotate(-45deg) translate(-9px, 5px);
 }
 nav .switch .hamburger .middle{
     opacity: 0;
 }
 nav .switch .hamburger .bottom{
-    transform: rotate(45deg) translate(-6px, -4px);
+    transform: rotate(45deg) translate(-9px, -5px);
 }
 nav .switch ul{
     opacity: 100;
@@ -115,9 +117,9 @@ header .background{
     position: relative;
     width: 100vw;
     height: 70vh;
-    background: url('./Images/titleImage.avif') no-repeat center center;
+    background: url('./Images/headerBackground.webp') no-repeat center center;
     background-size: cover;
-    opacity: 0.3;
+    opacity: 0.2;
     min-width: 800px;
     text-align: center;
 }
@@ -129,10 +131,10 @@ header .background::before{
     top: 0;
     left: 0;
     background: 
-        linear-gradient(to bottom, #0d0d0d, transparent 50px) top,
-        linear-gradient(to top, #0d0d0d, transparent 50px) bottom;
+        linear-gradient(to bottom, #0d0d0d, transparent 100px) top,
+        linear-gradient(to top, #0d0d0d, transparent 100px) bottom;
     background-repeat: no-repeat;
-    background-size: 100% 50px, 100% 50px;
+    background-size: 100% 100px, 100% 100px;
     z-index: 2;
 }
 header .title-container{
