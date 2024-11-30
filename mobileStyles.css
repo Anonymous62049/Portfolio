@@ -1,4 +1,8 @@
 @media screen and (max-width: 600px) {
+    nav{
+        position: absolute;
+        z-index: 1;
+    }
     nav > div{
         padding: 15px;
         width: 100%;
@@ -15,13 +19,16 @@
         transition-timing-function: ease-in-out;
         color: var(--background);
     }
-    nav li{
-        display: block;
-    }
     nav .logo{
         position: absolute;
         right: 10%;
         top: 2px;
         z-index: -1;
+    }
+    nav li{
+        display: block;
+    }
+    header h1{
+        font-size: 15vw;
     }
 }

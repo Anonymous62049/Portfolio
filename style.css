@@ -105,16 +105,23 @@ nav .logo{
     text-align: center;
 }
 header{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+header .background{
     position: relative;
     width: 100vw;
     height: 70vh;
-    max-height: 500px;
-    text-align: center;
     background: url('./Images/titleImage.avif') no-repeat center center;
     background-size: cover;
     opacity: 0.3;
+    min-width: 800px;
+    text-align: center;
 }
-header::before{
+header .background::before{
     content: " ";
     position: absolute;
     width: 100%;
@@ -128,9 +135,9 @@ header::before{
     background-size: 100% 50px, 100% 50px;
     z-index: 2;
 }
-/*.titleImg{
-    width: 100%;
-    max-height: 500px;
-    opacity: 0.3;
-    object-fit: cover;
-}*/
+header .title-container{
+    position: absolute;
+}
+header .title-container h1{
+    display: inline;
+}
