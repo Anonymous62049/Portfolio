@@ -36,8 +36,8 @@ nav{
     position: absolute;
     overflow: hidden;
     width: 100%;
-    height: 100%;
     z-index: 1;
+    top: 25px;
 }
 nav .hamburger {
     display: none;
@@ -102,7 +102,7 @@ nav .switch{
     color: #6d6d6d;
     text-transform: uppercase;
     display: block;
-    margin: 10px;
+    margin-bottom: 5px;
 }
 nav .logo{
     text-align: center;
@@ -141,4 +141,76 @@ header .title-container{
 }
 header .title-container h1{
     display: inline;
+}
+section.skills{
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+section.skills .center-circle{
+    width: 150px;
+    aspect-ratio: 1;
+    clip-path: circle(50%);
+    background-color: var(--lightBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: BebasKai;
+    font-size: 22pt;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+section.skills .center-circle:hover{
+    cursor: pointer;
+}
+section.skills .tile-container{
+    width: 250px;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+section.skills .tile-container .tile{
+    width: 50px;
+    aspect-ratio: 1;
+    background-color: white;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    position: absolute;
+}
+section.skills .tile-container .tile::before{
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    background-color: var(--background);
+    z-index: 1;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+section.skills .tile-container.alternate-axis{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+section.skills .tile-container .tile[num="2"]{
+    top: 100%;
+    transform: translateY(-100%);
+}
+section.skills .tile-container .tile[num="3"]{
+    left: 100%;
+    transform: translateX(-100%);
+}
+section.skills .tile-container .tile[num="4"]{
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+}
+section.skills .tile-container .tile[name="python"]::before{
+    background: url("./Images/pythonIcon.png") center center;
+    background-color: var(--background);
+    background-size: 100%;
 }

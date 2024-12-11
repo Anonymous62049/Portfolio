@@ -1,4 +1,8 @@
 @media screen and (max-width: 600px) {
+    nav{
+        top: 0;
+        height: 100%;
+    }
     nav > div{
         padding: 15px;
         width: 100%;
@@ -16,10 +20,7 @@
         color: var(--background);
     }
     nav .logo{
-        position: absolute;
-        right: 10%;
-        top: 2px;
-        z-index: -1;
+        display: none;
     }
     nav li{
         display: block;
