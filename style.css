@@ -3,6 +3,7 @@
     --lightBlue: #50bfb8;
     --orange: #ffb741;
     --purple: #766cab;
+    --tileColour: #1a1a1a;
 }
 @font-face {
     font-family: BebasKai;
@@ -150,7 +151,6 @@ section.skills{
 section.skills .center-circle{
     width: 150px;
     aspect-ratio: 1;
-    clip-path: circle(50%);
     background-color: var(--lightBlue);
     display: flex;
     align-items: center;
@@ -161,7 +161,8 @@ section.skills .center-circle{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    box-shadow: 0 0 150px 50px #50bfb88f;
+    border-radius: 50%;
 }
 section.skills .center-circle:hover{
     cursor: pointer;
@@ -174,10 +175,13 @@ section.skills .tile-container{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+section.skills .tile-container .tile-shadow{
+    filter: drop-shadow(0 0px 10px rgb(20, 20, 20));
+}
 section.skills .tile-container .tile{
     width: 50px;
     aspect-ratio: 1;
-    background-color: white;
+    background: linear-gradient(to top, var(--lightBlue), var(--purple));
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     position: absolute;
 }
@@ -189,7 +193,7 @@ section.skills .tile-container .tile::before{
     transform: translate(-50%, -50%);
     width: 95%;
     height: 95%;
-    background-color: var(--background);
+    background-color: var(--tileColour);
     z-index: 1;
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
@@ -211,6 +215,6 @@ section.skills .tile-container .tile[num="4"]{
 }
 section.skills .tile-container .tile[name="python"]::before{
     background: url("./Images/pythonIcon.png") center center;
-    background-color: var(--background);
+    background-color: var(--tileColour);
     background-size: 100%;
 }
