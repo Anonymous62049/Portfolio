@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./skillsCircle.css">
     <link rel="stylesheet" href="./mobileStyles.css">
     <title>Jayden Lynch</title>
 </head>
@@ -33,20 +34,56 @@
     </header>
     <section class="skills">
         <div>
-            <div class="center-circle">Skills</div>
+            <div class="shadow"></div>
+            <div class="center-circle">
+                <h3 id="skillsText">Skills</h3>
+                <div class="rating-circle thin" style="width: 100%;"></div>
+                <div class="rating-circle thick" style="width: 80%;"></div>
+                <div class="rating-circle middle" style="width: 65%;"></div>
+                <div class="rating-circle thin" style="width: 55%;"></div>
+            </div>
             <div class="tile-container">
-                <div class="tile" name="python"></div>
-                <div class="tile" num="2"></div>
-                <div class="tile" num="3"></div>
-                <div class="tile" num="4"></div>
+                <div class="tile-shadow"><div class="tile" name="python" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="java" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="html" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
             </div>
             <div class="tile-container alternate-axis">
-                <div class="tile-shadow"><div class="tile"></div></div>
-                <div class="tile" num="2"></div>
-                <div class="tile" num="3"></div>
-                <div class="tile" num="4"></div>
+                <div class="tile-shadow"><div class="tile" name="php" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="c++" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="css" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
             </div>
         </div>
     </section>
+    <script>
+        const skillCompetencies = new Map([
+            ["python", 30],
+            ["c++", 70],
+            ["java", 90], 
+            ["c#", 90],
+            ["html", 100],
+            ["css", 100], 
+            ["js", 70],
+            ["php", 40]
+        ]);
+        function showSkillCompetency(name, colour){
+            var rings = document.getElementsByClassName("rating-circle");
+            var value = parseInt(skillCompetencies.get(name));
+            document.getElementById("skillsText").innerText = value + "%";
+            for(var ring of rings){
+                ring.style.background = `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
+            }
+        }
+        function changeSkillsAnimState(){
+            var containers = document.getElementsByClassName("tile-container");
+            for(var container of containers){
+                container.classList.toggle("stopAnim");
+                for(var child of container.children){
+                    child.children[0].classList.toggle("stopAnim");
+                }
+            }
+        }
+    </script>
 </body>
 </html>

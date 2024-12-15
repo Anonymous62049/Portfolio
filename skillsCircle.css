@@ -1,0 +1,210 @@
+:root{
+    --animationLength: 50s;
+}
+section.skills .center-circle{
+    width: 28%;
+    max-width: 550px;
+    aspect-ratio: 1;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+section.skills .center-circle:hover{
+    cursor: pointer;
+}
+section.skills .center-circle h3{
+    z-index: 2;
+}
+section.skills .center-circle .rating-circle{
+    aspect-ratio: 1;
+    clip-path: circle();
+    background: conic-gradient(var(--tileColour) 40%, var(--lightBlue) 40%, var(--lightBlue) 60%);
+    position: absolute;
+    transition: all 1s ease-in-out;
+}
+section.skills .center-circle .rating-circle::before{
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1;
+    background-color: var(--background);
+    clip-path: circle();
+}
+section.skills .center-circle .thin.rating-circle::before{
+    width: 97%;
+}
+section.skills .center-circle .middle.rating-circle::before{
+    width: 94%;
+}
+section.skills .center-circle .thick.rating-circle::before{
+    width: 90%;
+}
+section.skills .tile-container{
+    width: calc(30% + 100px);
+    max-width: 650px;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    animation: rotateMainAxis linear var(--animationLength) infinite;
+}
+section.skills .tile-container.alternate-axis{
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation: rotateAlternateAxis linear var(--animationLength) infinite;
+}
+section.skills .tile-container .tile-shadow{
+    filter: drop-shadow(var(--shadowSize) var(--shadowSize) 10px var(--tileColour));
+    position: absolute;
+    width: 20%;
+    aspect-ratio: 1;
+}
+section.skills .tile-container .tile-shadow .tile{
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--lightBlue);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    transform-origin: center;
+    animation: rotateTiles linear var(--animationLength) infinite;
+}
+section.skills .tile-container .tile-shadow .tile::before{
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    background-color: var(--tileColour);
+    z-index: 1;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+/*section.skills .tile-container .tile-shadow .tile::after{
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(107, 117, 117, 0.505), rgba(107, 117, 117, 0.126), transparent);
+    z-index: 3;
+    opacity: 0.7;
+    transform-origin: center;
+    rotate: -45deg;
+    animation: rotateTiles linear var(--animationLength) infinite;
+}
+section.skills .tile-container .tile-shadow[num="2"] .tile::after{
+    rotate: 225deg;
+}
+section.skills .tile-container .tile-shadow[num="3"] .tile::after{
+    rotate: 45deg;
+}
+section.skills .tile-container .tile-shadow[num="4"] .tile::after{
+    rotate: 135deg;
+}*/
+section.skills .tile-container.alternate-axis .tile-shadow .tile{
+    rotate: -45deg;
+}
+section.skills .tile-container .tile-shadow[num="2"]{
+    top: 100%;
+    transform: translateY(-100%);
+    filter: drop-shadow(var(--shadowSize) var(--negShadowSize) 10px var(--tileColour));
+}
+section.skills .tile-container .tile-shadow[num="3"]{
+    left: 100%;
+    transform: translateX(-100%);
+    filter: drop-shadow(var(--negShadowSize) var(--shadowSize) 10px var(--tileColour));
+}
+section.skills .tile-container .tile-shadow[num="4"]{
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+    filter: drop-shadow(var(--negShadowSize) var(--negShadowSize) 10px var(--tileColour));
+}
+section.skills .tile-container .tile-shadow .tile[name="python"]{
+    background-color: var(--orange);
+}
+section.skills .tile-container .tile-shadow .tile[name="python"]::before{
+    background: url("./Images/pythonIcon.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 100%;
+}
+section.skills .tile-container .tile-shadow .tile[name="c#"]{
+    background-color: var(--purple);
+}
+section.skills .tile-container .tile-shadow .tile[name="c#"]::before{
+    background: url("./Images/cSharpIcon.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 70%;
+}
+section.skills .tile-container .tile-shadow .tile[name="c++"]{
+    background-color: var(--darkblue);
+}
+section.skills .tile-container .tile-shadow .tile[name="c++"]::before{
+    background: url("./Images/cPlusPlusIcon.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 70%;
+}
+section.skills .tile-container .tile-shadow .tile[name="java"]{
+    background-color: var(--red);
+}
+section.skills .tile-container .tile-shadow .tile[name="java"]::before{
+    background: url("./Images/javaLogo.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 140%;
+}
+section.skills .tile-container .tile-shadow .tile[name="html"]{
+    background-color: var(--red);
+}
+section.skills .tile-container .tile-shadow .tile[name="html"]::before{
+    background: url("./Images/htmlLogo.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 60%;
+}
+section.skills .tile-container .tile-shadow .tile[name="css"]{
+    background-color: var(--darkblue);
+}
+section.skills .tile-container .tile-shadow .tile[name="css"]::before{
+    background: url("./Images/cssLogo.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 70%;
+}
+section.skills .tile-container .tile-shadow .tile[name="js"]{
+    background-color: var(--orange);
+}
+section.skills .tile-container .tile-shadow .tile[name="js"]::before{
+    background: url("./Images/jsLogo.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 60%;
+}
+section.skills .tile-container .tile-shadow .tile[name="php"]{
+    background-color: var(--purple);
+}
+section.skills .tile-container .tile-shadow .tile[name="php"]::before{
+    background: url("./Images/phpLogo.png") center center no-repeat;
+    background-color: var(--tileColour);
+    background-size: 80%;
+}
+.stopAnim{
+    animation-play-state: paused !important;
+}
+@keyframes rotateMainAxis {
+    from {transform: translate(-50%, -50%);}
+    to{transform: translate(-50%, -50%) rotate(360deg);}
+}
+@keyframes rotateAlternateAxis {
+    from {transform: translate(-50%, -50%) rotate(45deg);}
+    to{transform: translate(-50%, -50%) rotate(405deg);}
+}
+@keyframes rotateTiles {
+    from {transform: none;}
+    to{transform: rotate(-360deg);}
+}
