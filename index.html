@@ -43,8 +43,8 @@
                 <div class="rating-circle thin" style="width: 55%;"></div>
             </div>
             <div class="tile-container">
-                <div class="tile-shadow"><div class="tile" name="python" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="java" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div></div>
                 <div class="tile-shadow" num="3"><div class="tile" name="html" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
                 <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
             </div>
@@ -67,13 +67,14 @@
             ["js", 70],
             ["php", 40]
         ]);
-        function showSkillCompetency(name, colour){
-            var rings = document.getElementsByClassName("rating-circle");
+        function showSkillCompetency(object){
+            var name = object.getAttribute('name');
+            var colour = getComputedStyle(object).backgroundColor;
+            var oldGradient = getComputedStyle(object).background;
             var value = parseInt(skillCompetencies.get(name));
             document.getElementById("skillsText").innerText = value + "%";
-            for(var ring of rings){
-                ring.style.background = `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
-            }
+            var newGradient = `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
+            animatePie(oldGradient, newGradient, 5);
         }
         function changeSkillsAnimState(){
             var containers = document.getElementsByClassName("tile-container");
@@ -84,6 +85,43 @@
                 }
             }
         }
+        function animatePie(prevGradient, newGradient, secs) {
+        const ruleName = "pieChartAnim";
+        const styleSheetId = "animation-keyframes";
+        
+        let styleSheet = document.getElementById(styleSheetId);
+        if (!styleSheet) {
+            styleSheet = document.createElement("style");
+            styleSheet.id = styleSheetId;
+            document.head.appendChild(styleSheet);
+        }
+
+        const ss = styleSheet.sheet;
+
+        // Remove any existing animations
+        for (let i = ss.cssRules.length - 1; i >= 0; i--) {
+            if (ss.cssRules[i].name === ruleName) {
+                ss.deleteRule(i);
+            }
+        }
+
+        ss.insertRule(`@keyframes ${ruleName} {
+                from { background: ${prevGradient}; }
+                to { background: ${newGradient}; }
+            }`, ss.cssRules.length);
+
+        // Apply the animation to elements with the "rating-circle" class
+        for (const el of document.getElementsByClassName("rating-circle")) {
+            el.style.animation = `${ruleName} ${secs}s ease-in-out 0 1 normal forwards`;
+            console.log(`${ruleName} ${secs}s ease-in-out 0 1 normal forwards`);
+        }
+
+        // Debug: Log the computed animation styles
+        for (const el of document.getElementsByClassName("rating-circle")) {
+            console.log(getComputedStyle(el).animation);
+        }
+    }
+
     </script>
 </body>
 </html>
