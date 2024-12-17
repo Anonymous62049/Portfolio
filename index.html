@@ -38,31 +38,34 @@
     <section class="skills">
             <div id="shadow"></div>
             <div class="center-circle">
-                    <h3 id="skillTitle"></h3>
+                <div class="skillText">
+                    <h3 id="skillTitle">Python</h3>
                     <h3 id="skillsText">Skills</h3>
-                    <p id="skillsSubtitle">I'm pretty good at this</p>
+                    <sub id="skillsSubtitle">I'm pretty good at this!</sub>
+                </div>
+                
                 <div class="rating-circle thin" style="width: 100%;"></div>
                 <div class="rating-circle thick" style="width: 80%;"></div>
                 <div class="rating-circle middle" style="width: 65%;"></div>
                 <div class="rating-circle thin" style="width: 55%;"></div>
             </div>
             <div class="tile-container">
-                <div class="tile-shadow" num="1"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div><p>Python</p></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div><p>html</p></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div><p>Java</p></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div><p>javascript</p></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div><sub>Python</sub></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div><sub>html</sub></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div><sub>Java</sub></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div><sub>javascript</sub></div>
             </div>
             <div class="tile-container alternate-axis">
-                <div class="tile-shadow" num="1"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div><p>php</p></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div><p>css</p></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div><p>c++</p></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div><p>c#</p></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div><sub>php</sub></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div><sub>css</sub></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div><sub>c++</sub></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div><sub>c#</sub></div>
             </div>
         </div>
     </section>
     <script>
         const skillCompetencies = new Map([
-            ["python", 30],
+            ["python", 40],
             ["c++", 70],
             ["java", 90], 
             ["c#", 90],
@@ -84,11 +87,11 @@
             document.getElementById("skillsText").innerText = value + "%";
             var subtitle = document.getElementById("skillsSubtitle");
             subtitle.innerText = phrases[Math.floor(value / (10 * phrases.length)) - 1]
-            subtitle.style.display = "inline";
+            subtitle.style.visibility = "visible";
             var title = document.getElementById("skillTitle");
             title.innerText = name;
-            title.style.display = "inline";
-            document.getElementById("shadow").style.boxShadow = `0 0 650px 12vw ${colour}`;
+            title.style.visibility = "visible";
+            document.getElementById("shadow").style.boxShadow = `0 0 650px var(--backShadowSize) ${colour}`;
             animatePie(crntPieVal, value, 0.5, colour, "rating-circle");
         }
         function changeSkillsAnimState(){

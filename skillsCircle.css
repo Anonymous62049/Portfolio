@@ -7,29 +7,48 @@ section.skills .center-circle{
     align-items: center;
     justify-content: center;
     position: absolute;
-    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     box-sizing: border-box;
+    container-name: skillsCircle;
+    container-type: inline-size;
+    overflow: hidden;
 }
 section.skills .center-circle:hover{
     cursor: pointer;
 }
+section.skills .center-circle .skillText{
+    text-align: center;
+    z-index: 2;
+    height: 40%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
 section.skills .center-circle h3{
     margin: 0;
-    z-index: 2;
+    padding: 0;
+    display: inline-block;
 }
-section.skills .center-circle p{
+section.skills .center-circle sub{
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 1vw;
-    display: none;
-    z-index: 2;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    align-self: start;
 }
 section.skills .center-circle #skillTitle{
     color: var(--tileColour);
+}
+section.skills .center-circle sub, section.skills .center-circle #skillTitle{
+    visibility: hidden;
 }
 section.skills .center-circle .rating-circle{
     aspect-ratio: 1;
@@ -66,6 +85,8 @@ section.skills .tile-container{
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
+    container-name: tileContainer;
+    container-type: inline-size;
 }
 section.skills .tile-container.alternate-axis{
     transform: translate(-50%, -50%) rotate(45deg);
@@ -73,12 +94,12 @@ section.skills .tile-container.alternate-axis{
 section.skills .tile-container .tile-shadow{
     /*filter: drop-shadow(var(--shadowSize) var(--shadowSize) 10px var(--tileColour));*/
     position: absolute;
-    width: 18%;
+    width: 16.5%;
     aspect-ratio: 1;
     transition: all 0.22s ease-in-out;
     transform-origin: center;
 }
-section.skills .tile-container .tile-shadow p{
+section.skills .tile-container .tile-shadow sub{
     position: absolute;
     display: inline-block;
     opacity: 0;
@@ -88,6 +109,7 @@ section.skills .tile-container .tile-shadow p{
     text-transform: uppercase;
     transition: all 0.22s ease-in-out;
     font-size: 0.8vw;
+    margin-top: 7px;
 }
 section.skills .tile-container .tile-shadow .tile{
     width: 100%;
@@ -113,7 +135,7 @@ section.skills .tile-container .tile-shadow:hover{
     cursor: pointer;
     scale: 1.2 !important;
 }
-section.skills .tile-container .tile-shadow:hover p{
+section.skills .tile-container .tile-shadow:hover sub{
     cursor: pointer;
     scale: 1.2;
     opacity: 1;
@@ -230,4 +252,17 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     background: url("./Images/phpLogo.png") center center no-repeat;
     background-color: var(--tileColour);
     background-size: 80%;
+}
+@container skillsCircle (width >= 550px){
+    section.skills .center-circle h3{
+        font-size: 44pt;
+    }
+    section.skills .center-circle sub{
+        font-size: 15pt;
+    }
+}
+@container tileContainer (width >= 650px){
+    section.skills .tile-container .tile-shadow sub{
+        font-size: 12pt;
+    }
 }
