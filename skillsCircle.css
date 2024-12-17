@@ -1,6 +1,3 @@
-:root{
-    --animationLength: 50s;
-}
 section.skills .center-circle{
     width: 28%;
     max-width: 550px;
@@ -25,7 +22,7 @@ section.skills .center-circle h3{
 section.skills .center-circle .rating-circle{
     aspect-ratio: 1;
     clip-path: circle();
-    background: conic-gradient(var(--tileColour) 40%, var(--lightBlue) 40%, var(--lightBlue) 60%);
+    background: var(--lightBlue);
     position: absolute;
     transition: all 1s ease-in-out;
 }
@@ -57,11 +54,9 @@ section.skills .tile-container{
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
-    animation: rotateMainAxis linear var(--animationLength) infinite;
 }
 section.skills .tile-container.alternate-axis{
     transform: translate(-50%, -50%) rotate(45deg);
-    animation: rotateAlternateAxis linear var(--animationLength) infinite;
 }
 section.skills .tile-container .tile-shadow{
     filter: drop-shadow(var(--shadowSize) var(--shadowSize) 10px var(--tileColour));
@@ -75,7 +70,6 @@ section.skills .tile-container .tile-shadow .tile{
     background-color: var(--lightBlue);
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     transform-origin: center;
-    animation: rotateTiles linear var(--animationLength) infinite;
 }
 section.skills .tile-container .tile-shadow .tile::before{
     content: " ";
@@ -102,7 +96,6 @@ section.skills .tile-container .tile-shadow .tile:hover{
     opacity: 0.7;
     transform-origin: center;
     rotate: -45deg;
-    animation: rotateTiles linear var(--animationLength) infinite;
 }
 section.skills .tile-container .tile-shadow[num="2"] .tile::after{
     rotate: 225deg;
@@ -195,9 +188,6 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     background: url("./Images/phpLogo.png") center center no-repeat;
     background-color: var(--tileColour);
     background-size: 80%;
-}
-.stopAnim{
-    animation-play-state: paused !important;
 }
 @keyframes rotateMainAxis {
     from {transform: translate(-50%, -50%);}

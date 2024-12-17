@@ -33,7 +33,6 @@
         </div>
     </header>
     <section class="skills">
-        <div>
             <div class="shadow"></div>
             <div class="center-circle">
                 <h3 id="skillsText">Skills</h3>
@@ -45,14 +44,14 @@
             <div class="tile-container">
                 <div class="tile-shadow"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div></div>
                 <div class="tile-shadow" num="2"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="html" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div></div>
             </div>
             <div class="tile-container alternate-axis">
-                <div class="tile-shadow"><div class="tile" name="php" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="c++" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="css" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this.getAttribute('name'), getComputedStyle(this).backgroundColor)"></div></div>
+                <div class="tile-shadow"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div></div>
             </div>
         </div>
     </section>
@@ -67,14 +66,13 @@
             ["js", 70],
             ["php", 40]
         ]);
+        var crntPieVal = 100;
         function showSkillCompetency(object){
             var name = object.getAttribute('name');
-            var colour = getComputedStyle(object).backgroundColor;
-            var oldGradient = getComputedStyle(object).background;
             var value = parseInt(skillCompetencies.get(name));
+            var colour = getComputedStyle(object).backgroundColor;
             document.getElementById("skillsText").innerText = value + "%";
-            var newGradient = `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
-            animatePie(oldGradient, newGradient, 5);
+            animatePie(crntPieVal, value, 0.5, colour, "rating-circle");
         }
         function changeSkillsAnimState(){
             var containers = document.getElementsByClassName("tile-container");
@@ -85,43 +83,36 @@
                 }
             }
         }
-        function animatePie(prevGradient, newGradient, secs) {
-        const ruleName = "pieChartAnim";
-        const styleSheetId = "animation-keyframes";
-        
-        let styleSheet = document.getElementById(styleSheetId);
-        if (!styleSheet) {
-            styleSheet = document.createElement("style");
-            styleSheet.id = styleSheetId;
-            document.head.appendChild(styleSheet);
-        }
+        var id = null;
+        function animatePie(oldVal, newVal, secs, colour, className) {
+            clearInterval(id);
+            const fps = 60;
+            const totalSteps = secs * fps; // Total frames for the duration
 
-        const ss = styleSheet.sheet;
+            const incrVal = (newVal - oldVal) / totalSteps;
 
-        // Remove any existing animations
-        for (let i = ss.cssRules.length - 1; i >= 0; i--) {
-            if (ss.cssRules[i].name === ruleName) {
-                ss.deleteRule(i);
+            const interval = 1000 / fps; // Time interval per frame in milliseconds
+            var objects = document.getElementsByClassName(className);
+            id = setInterval(anim, interval);
+            function anim(){
+                oldVal += incrVal;
+                for(let i = 0; i < objects.length; i++){
+                    objects[i].style.background = createGradient(oldVal, colour);
+                }
+                crntPieVal = oldVal;
+                if(Math.round(oldVal) == newVal){
+                    clearInterval(id);
+                    id = null;
+                    for(let i = 0; i < objects.length; i++){
+                        objects[i].style.background = createGradient(newVal, colour);
+                    }
+                    return;
+                }
             }
         }
-
-        ss.insertRule(`@keyframes ${ruleName} {
-                from { background: ${prevGradient}; }
-                to { background: ${newGradient}; }
-            }`, ss.cssRules.length);
-
-        // Apply the animation to elements with the "rating-circle" class
-        for (const el of document.getElementsByClassName("rating-circle")) {
-            el.style.animation = `${ruleName} ${secs}s ease-in-out 0 1 normal forwards`;
-            console.log(`${ruleName} ${secs}s ease-in-out 0 1 normal forwards`);
+        function createGradient(value, colour){
+            return `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
         }
-
-        // Debug: Log the computed animation styles
-        for (const el of document.getElementsByClassName("rating-circle")) {
-            console.log(getComputedStyle(el).animation);
-        }
-    }
-
     </script>
 </body>
 </html>
