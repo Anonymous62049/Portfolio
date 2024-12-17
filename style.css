@@ -2,7 +2,7 @@
     --background: #0d0d0d;
     --lightBlue: #50bfb8;
     --orange: #ffb741;
-    --purple: #766cab;
+    --purple: #7a52aa;
     --tileColour: #1a1a1a;
     --red: rgb(223, 14, 14);
     --darkblue: rgb(18, 138, 230);
@@ -36,6 +36,10 @@ h3 {
 a {
     font-family: BebasKai;
     font-size: 2.5vh;
+}
+p{
+    font-family: 'Roboto';
+    font-size: 1vw;
 }
 nav{
     position: absolute;
@@ -179,7 +183,7 @@ section.skills::after{
     background-size: 100% 100px, 100% 100px;
     z-index: 2;
 }*/
-/*section.skills .shadow{
+section.skills #shadow{
     box-shadow: 0 0 650px 12vw #50bfb8b3;
     width: 0;
     height: 0;
@@ -187,7 +191,7 @@ section.skills::after{
     left: 50%;
     position: absolute;
     opacity: 0.5;
-}*/
+}
 .circle{
     position: relative;
     clip-path: polygon(100% 0, 50% 50%, 48% 0, 0% 0%, 0 100%, 100% 100%);

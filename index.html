@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./skillsCircle.css">
     <link rel="stylesheet" href="./mobileStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Jayden Lynch</title>
 </head>
 <body>
@@ -33,25 +36,27 @@
         </div>
     </header>
     <section class="skills">
-            <div class="shadow"></div>
+            <div id="shadow"></div>
             <div class="center-circle">
-                <h3 id="skillsText">Skills</h3>
+                    <h3 id="skillTitle"></h3>
+                    <h3 id="skillsText">Skills</h3>
+                    <p id="skillsSubtitle">I'm pretty good at this</p>
                 <div class="rating-circle thin" style="width: 100%;"></div>
                 <div class="rating-circle thick" style="width: 80%;"></div>
                 <div class="rating-circle middle" style="width: 65%;"></div>
                 <div class="rating-circle thin" style="width: 55%;"></div>
             </div>
             <div class="tile-container">
-                <div class="tile-shadow"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div><p>Python</p></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div><p>html</p></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div><p>Java</p></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div><p>javascript</p></div>
             </div>
             <div class="tile-container alternate-axis">
-                <div class="tile-shadow"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div><p>php</p></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div><p>css</p></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div><p>c++</p></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div><p>c#</p></div>
             </div>
         </div>
     </section>
@@ -64,14 +69,26 @@
             ["html", 100],
             ["css", 100], 
             ["js", 70],
-            ["php", 40]
+            ["php", 60]
         ]);
+        const phrases = [
+            "I don't use this much.",
+            "I'm pretty good at this!",
+            "I'm very good at this!"
+        ]
         var crntPieVal = 100;
         function showSkillCompetency(object){
             var name = object.getAttribute('name');
             var value = parseInt(skillCompetencies.get(name));
             var colour = getComputedStyle(object).backgroundColor;
             document.getElementById("skillsText").innerText = value + "%";
+            var subtitle = document.getElementById("skillsSubtitle");
+            subtitle.innerText = phrases[Math.floor(value / (10 * phrases.length)) - 1]
+            subtitle.style.display = "inline";
+            var title = document.getElementById("skillTitle");
+            title.innerText = name;
+            title.style.display = "inline";
+            document.getElementById("shadow").style.boxShadow = `0 0 650px 12vw ${colour}`;
             animatePie(crntPieVal, value, 0.5, colour, "rating-circle");
         }
         function changeSkillsAnimState(){
