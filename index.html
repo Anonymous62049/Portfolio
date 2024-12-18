@@ -36,7 +36,7 @@
         </div>
     </header>
     <section class="skills">
-            <div id="shadow"></div>
+        <div id="shadow"></div>
             <div class="center-circle">
                 <div class="skillText">
                     <h3 id="skillTitle">Python</h3>
@@ -50,22 +50,25 @@
                 <div class="rating-circle thin" style="width: 55%;"></div>
             </div>
             <div class="tile-container">
-                <div class="tile-shadow" num="1"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div><sub>Python</sub></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div><sub>html</sub></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div><sub>Java</sub></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div><sub>javascript</sub></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="html" onclick="showSkillCompetency(this)"></div><sub>html</sub></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="js" onclick="showSkillCompetency(this)"></div><sub>javascript</sub></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="python" onclick="showSkillCompetency(this)"></div><sub>Python</sub></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="java" onclick="showSkillCompetency(this)"></div><sub>Java</sub></div>
             </div>
             <div class="tile-container alternate-axis">
-                <div class="tile-shadow" num="1"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div><sub>php</sub></div>
-                <div class="tile-shadow" num="2"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div><sub>css</sub></div>
-                <div class="tile-shadow" num="3"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div><sub>c++</sub></div>
-                <div class="tile-shadow" num="4"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div><sub>c#</sub></div>
+                <div class="tile-shadow" num="3"><div class="tile" name="php" onclick="showSkillCompetency(this)"></div><sub>php</sub></div>
+                <div class="tile-shadow" num="1"><div class="tile" name="css" onclick="showSkillCompetency(this)"></div><sub>css</sub></div>
+                <div class="tile-shadow" num="4"><div class="tile" name="c++" onclick="showSkillCompetency(this)"></div><sub>c++</sub></div>
+                <div class="tile-shadow" num="2"><div class="tile" name="c#" onclick="showSkillCompetency(this)"></div><sub>c#</sub></div>
             </div>
         </div>
     </section>
+    <section class="projects">
+        
+    </section>
     <script>
         const skillCompetencies = new Map([
-            ["python", 40],
+            ["python", 50],
             ["c++", 70],
             ["java", 90], 
             ["c#", 90],
@@ -75,16 +78,16 @@
             ["php", 60]
         ]);
         const phrases = [
-            "I don't use this much.",
-            "I'm pretty good at this!",
-            "I'm very good at this!"
+            "I Don't Use This Much.",
+            "I'm Pretty Good at This!",
+            "I'm Very Good at This!"
         ]
         var crntPieVal = 100;
         function showSkillCompetency(object){
             var name = object.getAttribute('name');
             var value = parseInt(skillCompetencies.get(name));
             var colour = getComputedStyle(object).backgroundColor;
-            document.getElementById("skillsText").innerText = value + "%";
+            document.getElementById("skillsText").style.display = "none";
             var subtitle = document.getElementById("skillsSubtitle");
             subtitle.innerText = phrases[Math.floor(value / (10 * phrases.length)) - 1]
             subtitle.style.visibility = "visible";
