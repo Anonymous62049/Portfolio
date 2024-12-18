@@ -267,16 +267,25 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     }
 }
 @media screen and (max-width: 600px){
+    :root{
+        --backShadowSize: 20vw;
+    }
+    section.skills{
+        height: fit-content;
+        padding: 50px 0 50px 0;
+    }
     section.skills .center-circle{
         position: relative;
         width: 70%;
-        margin-bottom: 20px;
+        margin: 0 0 40px 0;
+        top: 0;
+        transform: translate(-50%, 0);
     }
     section.skills .center-circle .skillText h3{
         font-size: 10vw;
     }
     section.skills .center-circle .skillText sub{
-        font-size: 2.8vw;
+        font-size: 2.6vw;
     }
     section.skills .center-circle #skillTitle{
         position: relative;
@@ -284,9 +293,9 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
         font-size: 8vw;
     }
     section.skills .tile-container{
-        height: 70px;
+        height: 80px;
         display: grid;
-        grid-template-columns: repeat(4, 70px);
+        grid-template-columns: repeat(4, 80px);
         gap: 20px;
         position: relative;
         box-sizing: border-box;
@@ -309,5 +318,8 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     }
     section.skills .tile-container .tile-shadow sub{
         font-size: 2vw;
+    }
+    section.skills .tile-container .tile-shadow .tile::after{
+        transform: rotate(180deg) !important;
     }
 }
