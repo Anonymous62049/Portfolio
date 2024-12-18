@@ -22,7 +22,7 @@ section.skills .center-circle:hover{
 section.skills .center-circle .skillText{
     text-align: center;
     z-index: 2;
-    height: 40%;
+    height: fit-content;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
@@ -264,5 +264,50 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
 @container tileContainer (width >= 650px){
     section.skills .tile-container .tile-shadow sub{
         font-size: 12pt;
+    }
+}
+@media screen and (max-width: 600px){
+    section.skills .center-circle{
+        position: relative;
+        width: 70%;
+        margin-bottom: 20px;
+    }
+    section.skills .center-circle .skillText h3{
+        font-size: 10vw;
+    }
+    section.skills .center-circle .skillText sub{
+        font-size: 2.8vw;
+    }
+    section.skills .center-circle #skillTitle{
+        position: relative;
+        top: 8px;
+        font-size: 8vw;
+    }
+    section.skills .tile-container{
+        height: 70px;
+        display: grid;
+        grid-template-columns: repeat(4, 70px);
+        gap: 20px;
+        position: relative;
+        box-sizing: border-box;
+        width: fit-content;
+        margin-bottom: 50px;
+        transform: translate(-50%, 0);
+        top: 0;
+    }
+    section.skills .tile-container.tile-container.alternate-axis{
+        transform: translate(-50%, 0) rotate(0);
+    }
+    section.skills .tile-container .tile-shadow{
+        position: relative;
+        top: 0; 
+        left: 0;
+        width: 100%;
+    }
+    section.skills .tile-container.alternate-axis .tile-shadow{
+        rotate: none;
+    }
+    section.skills .tile-container .tile-shadow sub{
+        font-size: 2vw;
     }
 }

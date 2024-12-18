@@ -94,15 +94,6 @@
             document.getElementById("shadow").style.boxShadow = `0 0 650px var(--backShadowSize) ${colour}`;
             animatePie(crntPieVal, value, 0.5, colour, "rating-circle");
         }
-        function changeSkillsAnimState(){
-            var containers = document.getElementsByClassName("tile-container");
-            for(var container of containers){
-                container.classList.toggle("stopAnim");
-                for(var child of container.children){
-                    child.children[0].classList.toggle("stopAnim");
-                }
-            }
-        }
         var id = null;
         function animatePie(oldVal, newVal, secs, colour, className) {
             clearInterval(id);
