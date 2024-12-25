@@ -97,7 +97,7 @@ section.skills .center-circle .thick.rating-circle::before{
     width: 90%;
 }
 section.skills .tile-container{
-    width: calc(30% + 100px);
+    width: calc(28% + 100px);
     max-width: 650px;
     aspect-ratio: 1;
     position: absolute;
@@ -288,7 +288,7 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
 }
 @media screen and (max-width: 600px){
     :root{
-        --backShadowSize: 20vw;
+        --backShadowSize: 25vw;
     }
     section.skills{
         height: fit-content;
@@ -297,7 +297,7 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     section.skills #shadow{
         top: calc(35vw + 50px);
         transform: translate(-50%, 0);
-        opacity: 0.9;
+        opacity: 1;
     }
     section.skills .center-circle{
         position: relative;
