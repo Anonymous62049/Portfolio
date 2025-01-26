@@ -1,4 +1,4 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
     nav{
         top: 0;
         height: 100vh;
@@ -39,8 +39,12 @@
     a{
         font-size: 3.5vh;
     }
+    section.projects .tile-container{
+        width: 100%;
+    }
     section.projects .tile{
         width: 95%;
+        min-width: unset;
     }
     section.projects .tile .text h4{
         font-size: 6vw;
