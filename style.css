@@ -217,7 +217,8 @@ section.projects .tile{
     border-radius: 10px;
     overflow: hidden;
     box-sizing: border-box;
-    aspect-ratio: 1.13;
+    aspect-ratio: 1.1;
+    background-color: transparent;
 }
 section.projects .tile img{
     width: 100%;
@@ -241,4 +242,17 @@ section.projects .tile .text p{
     color: gray;
     margin: 2px 0 2px 0;
     font-family: 'Roboto', sans-serif;
+}
+section.footer{
+    padding: 15vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    background-color: rgb(34, 34, 34);
+}
+section.footer ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: white;
 }
