@@ -182,7 +182,7 @@ section.skills::after{
 }
 section.projects{
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     padding: 50px 30px 50px 30px;
     box-sizing: border-box;
 }
@@ -211,26 +211,39 @@ section.projects .tile-container{
     justify-content: center;
 }
 section.projects .tile{
-    width: 250px;
+    width: 40%;
     display: grid;
     grid-template-rows: 4fr 1fr;
-    border-radius: 10px;
-    overflow: hidden;
     box-sizing: border-box;
     aspect-ratio: 1.1;
     background-color: transparent;
+    min-width: 400px;
+}
+section.projects .tile:hover{
+    cursor: pointer;
+}
+section.projects .tile .img-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
 }
 section.projects .tile img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+section.projects .tile:hover img{
+    transform: scale(1.1);
 }
 section.projects .tile .text{
     background-color: var(--tileColour);
-    padding: 15px;
+    padding: 20px;
     color: lightgray;
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    border-radius: 0 0 10px 10px;
     box-sizing: border-box;
 }
 section.projects .tile .text h4{
@@ -242,17 +255,4 @@ section.projects .tile .text p{
     color: gray;
     margin: 2px 0 2px 0;
     font-family: 'Roboto', sans-serif;
-}
-section.footer{
-    padding: 15vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    background-color: rgb(34, 34, 34);
-}
-section.footer ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    color: white;
 }
