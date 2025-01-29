@@ -256,3 +256,83 @@ section.projects .tile .text p{
     margin: 2px 0 2px 0;
     font-family: 'Roboto', sans-serif;
 }
+section.project-info{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    width: 100%;
+    height: 50vh;
+    gap: 40px;
+    padding: 40px;
+    margin-top: 100px;
+    box-sizing: border-box;
+}
+section.project-info .text{
+}
+section.project-info .text h3{
+    margin: 0 0 10px 0;
+}
+section.project-info .text p{
+    margin: 0;
+}
+section.project-info .slideshow{
+    position: relative;
+    width: 100%;
+    aspect-ratio: calc(16/9);
+    border-radius: 5px;
+    box-shadow: rgb(60, 60, 60) 0 0 100px 0px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+section.project-info .slideshow img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+section.project-info .slideshow .buttons{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+section.project-info .slideshow .buttons a{
+    cursor: pointer;
+    padding: 15px;
+    text-align: center;
+    font-size: 17pt;
+    font-weight: bold;
+    margin: 0;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.2s ease-in-out;
+}
+section.project-info .slideshow .buttons a:hover{
+    background-color: rgba(9, 9, 9, 0.758);
+}
+section.project-info .slideshow .buttons #next{
+    border-radius: 4px 0 0 4px;
+}
+section.project-info .slideshow #fade-screen{
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: white;
+    display: none;
+}
+@keyframes fade {
+    0%{opacity: 0}
+    50%{opacity: 1;}
+    100%{opacity: 0;}
+}
+.fade{
+    display: block !important;
+    animation-name: fade;
+    animation-duration: 0.8s; /*If changed, change the promise timeout value respectively*/
+}

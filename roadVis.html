@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./skillsCircle.css">
+    <link rel="stylesheet" href="./mobileStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Jayden Lynch</title>
+    <style>
+        nav{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a class="logo">JaydenLynch</a>
+            <div class="hamburger" onclick="this.parentElement.classList.toggle('switch')">
+                <div class="top line"></div>
+                <div class="middle line"></div>
+                <div class="bottom line"></div>
+            </div>
+            <ul>
+                <li><a>Home</a></li>
+                <li><a>Skills</a></li>
+                <li><a>Projects</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="project-info">
+        <div class="text">
+            <h3>Algorithm Visualisation</h3>
+            <p>Some text here</p>
+        </div>
+        <div class="slideshow">
+            <img id="slideshowImg" src="./Images/Map Images/Full Route.png">
+            <div class="buttons">
+                <a onclick="changeSlide(-1)" id="prev">&#10094;</a>
+                <a onclick="changeSlide(1)" id="next">&#10095;</a>
+            </div>
+            <div id="fade-screen"></div>
+        </div>
+    </section>
+    <script>
+        var crntImageIndex = 0;
+        var images = [
+            "./Images/Map Images/Full Route.png",
+            "./Images/Map Images/End Node.png",
+            "./Images/Map Images/Sydney Harbour Start.png",
+            "./Images/Map Images/Ramsgate End.png",
+            "./Images/Map Images/Start Node.png"
+        ];
+        function changeSlide(direction){
+            document.getElementById('fade-screen').classList.add('fade');
+            setTimeout(() => {
+                crntImageIndex = crntImageIndex + direction;
+                if(crntImageIndex >= images.length) crntImageIndex = 0;
+                else if(crntImageIndex < 0) crntImageIndex = 4;
+                document.getElementById('slideshowImg').src = images[crntImageIndex];
+            }, 380);
+            setTimeout(() => {
+                document.getElementById('fade-screen').classList.remove('fade');
+            }, 800);
+        }
+    </script>
+</body>
