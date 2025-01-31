@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="./Images/Map Images/Full Route.png">
+    <link rel="preload" as="image" href="./Images/Map Images/End Node.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Sydney Harbour Start.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Ramsgate End.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Start Node.png">
     <title>Jayden Lynch</title>
     <style>
         nav{
@@ -36,7 +41,10 @@
     <section class="project-info">
         <div class="text">
             <h3>Algorithm Visualisation</h3>
-            <p>Some text here</p>
+            <!--<p class="tag">JavaScript - Python - HTML</p></!-->
+            <p>
+                Some Text Here
+            </p>
         </div>
         <div class="slideshow">
             <img id="slideshowImg" src="./Images/Map Images/Full Route.png">
@@ -49,7 +57,10 @@
     </section>
     <script>
         var crntImageIndex = 0;
-        var images = [
+        var timeoutID = undefined;
+        const slideInterval = 6000; //In ms
+        const fadeAnimDuration = 1000; //In ms
+        const images = [
             "./Images/Map Images/Full Route.png",
             "./Images/Map Images/End Node.png",
             "./Images/Map Images/Sydney Harbour Start.png",
@@ -57,16 +68,26 @@
             "./Images/Map Images/Start Node.png"
         ];
         function changeSlide(direction){
+            clearTimeout(timeoutID);
             document.getElementById('fade-screen').classList.add('fade');
             setTimeout(() => {
                 crntImageIndex = crntImageIndex + direction;
                 if(crntImageIndex >= images.length) crntImageIndex = 0;
                 else if(crntImageIndex < 0) crntImageIndex = 4;
                 document.getElementById('slideshowImg').src = images[crntImageIndex];
-            }, 380);
+            }, (fadeAnimDuration / 2) - 30);
             setTimeout(() => {
                 document.getElementById('fade-screen').classList.remove('fade');
-            }, 800);
+                autoChangeSlides();
+            }, fadeAnimDuration);
         }
+        function autoChangeSlides(){
+            timeoutID = setTimeout(() => {
+                changeSlide(1);
+                autoChangeSlides()
+            }, slideInterval);
+            console.log(timeoutID)
+        }
+        autoChangeSlides();
     </script>
 </body>

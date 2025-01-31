@@ -250,7 +250,7 @@ section.projects .tile .text h4{
     margin: 0;
     font-size: 3vw;
 }
-section.projects .tile .text p{
+section.projects .tile .text p, section.project-info .text .tag{
     font-size: 1.3vw;
     color: gray;
     margin: 2px 0 2px 0;
@@ -266,13 +266,15 @@ section.project-info{
     margin-top: 100px;
     box-sizing: border-box;
 }
-section.project-info .text{
-}
 section.project-info .text h3{
     margin: 0 0 10px 0;
 }
+section.project-info .text .tag{
+    margin-bottom: 10px;
+}
 section.project-info .text p{
     margin: 0;
+    font-size: 12pt;
 }
 section.project-info .slideshow{
     position: relative;
@@ -334,5 +336,5 @@ section.project-info .slideshow #fade-screen{
 .fade{
     display: block !important;
     animation-name: fade;
-    animation-duration: 0.8s; /*If changed, change the promise timeout value respectively*/
+    animation-duration: 1s; /*If changed, change the timeout value respectively*/
 }
