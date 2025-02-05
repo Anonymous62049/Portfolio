@@ -1,0 +1,51 @@
+.actionButton{
+    width: fit-content;
+    height: fit-content;
+    border: solid black 1px;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+    display: inline-block;
+    background-color: var(--darkblue);
+    font-weight: bold;
+}
+.actionButton:hover{
+    cursor: pointer;
+}
+.inputs{
+    border: none;
+    padding: 0; 
+    position: relative;
+}
+#map{
+    z-index: 2;
+    margin-top: 10px;
+    margin: auto;
+}
+body::before{
+    top: 0;
+    left: 0;
+    content: "Click point on map";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.784);
+    z-index: 1;
+    display: none;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16pt;
+    font-family: "Roboto";
+    padding-top: 100px;
+}
+body.mapFocus::before{
+    display: block;
+}
+fieldset{
+    margin: 0;
+    padding: 0;
+}
+#factors{
+    margin-bottom: 30px;
+}

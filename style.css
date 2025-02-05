@@ -19,6 +19,8 @@ body {
     color: white;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
 }
 h1 {
     font-family: BebasKai;
@@ -43,11 +45,9 @@ a {
     font-size: 2.5vh;
 }
 p{
-    font-family: 'Roboto', sans-serif;
     font-size: 14pt;
 }
 sub{
-    font-family: 'Roboto', sans-serif;
     font-size: 1vw;
 }
 nav{
@@ -78,9 +78,14 @@ nav li{
     display: inline-block;
     margin-right: 15px;
     transition: color 0.25s ease-out;
+    color: white;
 }
 nav li:hover{
     color: var(--lightBlue);
+}
+nav li a{
+    text-decoration: none;
+    color: inherit;
 }
 nav .switch ul:hover{
     color: lightgray;
@@ -197,9 +202,9 @@ section.projects .title{
 section.projects .title h2{
     margin: 0 0 10px 0;
 }
-section.projects .title .line{
+.title-underline{
     height: 4px;
-    width: 20vw;
+    width: 100%;
     background-color: var(--lightBlue);
 }
 section.projects .tile-container{
@@ -257,24 +262,36 @@ section.projects .tile .text p, section.project-info .text .tag{
     font-family: 'Roboto', sans-serif;
 }
 section.project-info{
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
-    height: 50vh;
-    gap: 40px;
-    padding: 40px;
+    height: fit-content;
     margin-top: 100px;
+    margin-bottom: 100px;
     box-sizing: border-box;
 }
-section.project-info .text h3{
-    margin: 0 0 10px 0;
+section.project-info .text{
+    width: 720px;
+}
+section.project-info .text h2{
+    font-size: 64pt;
+    margin: 0 0 -5px 0;
+    text-wrap: nowrap;
+}
+section.project-info .text .title{
+    margin-bottom: 40px;
 }
 section.project-info .text .tag{
     margin-bottom: 10px;
+    font-size: 14pt;
 }
 section.project-info .text p{
     margin: 0;
-    font-size: 12pt;
+    text-align: justify;
+    text-justify: auto;
+    color: gray;
 }
 section.project-info .slideshow{
     position: relative;
@@ -284,6 +301,8 @@ section.project-info .slideshow{
     box-shadow: rgb(60, 60, 60) 0 0 100px 0px;
     box-sizing: border-box;
     overflow: hidden;
+    max-width: 1400px;
+    margin-top: 50px;
 }
 section.project-info .slideshow img{
     object-fit: cover;
@@ -336,5 +355,5 @@ section.project-info .slideshow #fade-screen{
 .fade{
     display: block !important;
     animation-name: fade;
-    animation-duration: 1s; /*If changed, change the timeout value respectively*/
+    animation-duration: 1s; /*If changed, change fadeAnimDuration respectively*/
 }

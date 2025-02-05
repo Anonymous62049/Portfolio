@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./skillsCircle.css">
+    <link rel="stylesheet" href="./RoadProject/styles.css">
     <link rel="stylesheet" href="./mobileStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,30 @@
     <link rel="preload" as="image" href="./Images/Map Images/Sydney Harbour Start.png">
     <link rel="preload" as="image" href="./Images/Map Images/Ramsgate End.png">
     <link rel="preload" as="image" href="./Images/Map Images/Start Node.png">
-    <title>Jayden Lynch</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <title>Projects - Algorithm Visualisation</title>
     <style>
+        body{
+            padding: 0 40px 0 40px;
+            max-width: 2000px;
+            margin: auto;
+        }
         nav{
             position: relative;
+        }
+        section.tryout .title{
+            font-size: 50pt;
+            margin: 50px 0 20px 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        section.tryout .title h2{
+            margin: 0;
         }
     </style>
 </head>
@@ -31,34 +51,107 @@
                 <div class="bottom line"></div>
             </div>
             <ul>
-                <li><a>Home</a></li>
-                <li><a>Skills</a></li>
-                <li><a>Projects</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html#skills">Skills</a></li>
+                <li><a href="./index.html#projects">Projects</a></li>
                 <li><a>Contact</a></li>
             </ul>
         </div>
     </nav>
     <section class="project-info">
         <div class="text">
-            <h3>Algorithm Visualisation</h3>
-            <!--<p class="tag">JavaScript - Python - HTML</p></!-->
+            <div class="title">
+                <h2>Algorithm Visualisation</h2>
+                <div class="title-underline" style="background-color: var(--purple);"></div>
+            </div>
+            <!--<p class="tag">JavaScript - Python - HTML</p>-->
             <p>
-                Some Text Here
+                This project visualises the pathfinding algorithms Dijkstra's and A*, finding their way between two points in the city of Sydney.
+                It shows how the algorithms prioritise roads differently and the result of having an accurate algorithm versus an efficient one.
             </p>
         </div>
         <div class="slideshow">
             <img id="slideshowImg" src="./Images/Map Images/Full Route.png">
             <div class="buttons">
-                <a onclick="changeSlide(-1)" id="prev">&#10094;</a>
-                <a onclick="changeSlide(1)" id="next">&#10095;</a>
+                <a onclick="changeSlide(-1, true)" id="prev">&#10094;</a>
+                <a onclick="changeSlide(1, true)" id="next">&#10095;</a>
             </div>
             <div id="fade-screen"></div>
         </div>
     </section>
+    <section class="tryout" style="margin-bottom: 100px;">
+        <div class="title">
+            <span>
+                <h2>Try It Out</h2>
+                <div class="title-underline" style="background-color: var(--darkblue);"></div>
+            </span>
+            
+        </div>
+        <div input="button" class="actionButton" onclick="settingPoint = 'start'; document.body.classList = 'mapFocus'">Set Start Point</div>
+        <div class="actionButton" onclick="settingPoint = 'end'; document.body.classList = 'mapFocus'">Set End Point</div>
+        <div class="actionButton" onclick="resetMap()">Reset</div>
+        <fieldset class="inputs"></fieldset>
+            <fieldset class="inputs"  style="margin-bottom: 20px;">
+                <input type="radio" id="dijkstra" name="mode" onchange="changeMode()">
+                <label for="dijkstra">Dijkstra's Algorithm</label><br>
+                <input type="radio" id="a*" name="mode" checked onchange="changeMode()">
+                <label for="a*">A* Algorithm</label><br>
+            </fieldset>
+            <fieldset class="inputs" id="factors">
+                <strong>A* Heuristic Factors</strong><br>
+                <label for="shortDist">Distance from starting node</label>
+                <input type="range" id="shortDist" min="1" max="1000" value="100" oninput="document.getElementById('shortDistLbl').innerHTML = 'Distance / ' + this.value">
+                <label id="shortDistLbl">Distance / 100</label><br>
+                <label for="euclDist">Distance to destination node</label>
+                <input type="range" id="euclDist" min="0" max="3000" step='50' value="700" oninput="document.getElementById('euclDistLbl').innerHTML = 'Distance * ' + this.value">
+                <label id="euclDistLbl">Distance * 700</label>
+                <br>
+                <label for="turns">Less turns preference</label>
+                <input type="range" id="turns" value="0.005" min="0" max="1" step="0.001" oninput="document.getElementById('turnsLbl').innerHTML = 'Difference in angle * ' + this.value">
+                <label id="turnsLbl">Difference in angle * 0.007</label><br>
+                <label for="roadLength">Longer Roads Preference</label>
+                <input type="range" id="roadLength" value="0.005" min="0" max="1" step="0.001" oninput="document.getElementById('roadLbl').innerHTML = 'Length * ' + this.value">
+                <label id="roadLbl">Length * 0.005</label>
+            </fieldset>
+        </fieldset>
+        
+        <div id="map" style="width: 100%; height: 65vh"></div>
+        <div class="actionButton" style="margin-top: 10px;" onclick="dijkstraShortestPath();">Find Shortest Path</div>
+        <label id="debugLbl" style="display: inline;"></label>
+        <fieldset class="inputs" style="display: inline-block; top: 10px;">
+            <input type="checkbox" checked id="showBlueRoads" onchange="showHideLayer(cityRoadsLayer, document.getElementById('showBlueRoads'))">
+            <label>Show Traversed Roads</label><br>
+            <input type="checkbox" checked id="showShortest" onchange="showHideLayer(shortestPathLayer, document.getElementById('showShortest'))">
+            <label>Show Shortest Path</label>
+        </fieldset>
+    </section>
+    <section class="projects">
+        <div class="title">
+            <span>
+                <h2>My Other Projects</h2>
+                <div class="title-underline" style="background-color: var(--darkblue);"></div>
+            </span>
+            
+        </div>
+        <div class="tile-container">
+            <div class="tile" onclick="window.location='./';">
+                <div class="img-container">
+                    <img src="./Images/Calendar with add event.png">
+                </div>
+                <div class="text">
+                    <h4>Scheduling App</h4>
+                    <p>- Software Design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./RoadProject/pathfinding.js"></script>
     <script>
         var crntImageIndex = 0;
         var timeoutID = undefined;
-        const slideInterval = 6000; //In ms
+        const slideInterval = 8000; //In ms
         const fadeAnimDuration = 1000; //In ms
         const images = [
             "./Images/Map Images/Full Route.png",
@@ -67,26 +160,25 @@
             "./Images/Map Images/Ramsgate End.png",
             "./Images/Map Images/Start Node.png"
         ];
-        function changeSlide(direction){
-            clearTimeout(timeoutID);
-            document.getElementById('fade-screen').classList.add('fade');
+        function changeSlide(direction, manualChange){
+            if(manualChange) clearTimeout(timeoutID);
+            document.getElementById('fade-screen').classList.add('fade'); //Starts fade animation
             setTimeout(() => {
                 crntImageIndex = crntImageIndex + direction;
-                if(crntImageIndex >= images.length) crntImageIndex = 0;
-                else if(crntImageIndex < 0) crntImageIndex = 4;
-                document.getElementById('slideshowImg').src = images[crntImageIndex];
-            }, (fadeAnimDuration / 2) - 30);
+                if(crntImageIndex >= images.length) crntImageIndex = 0; //Set index upper bound
+                else if(crntImageIndex < 0) crntImageIndex = images.length - 1; //Set index lower bound
+                document.getElementById('slideshowImg').src = images[crntImageIndex]; //Change image
+            }, (fadeAnimDuration / 2) - 30); //Changes image when window is white. -30ms to give the image time to render
             setTimeout(() => {
-                document.getElementById('fade-screen').classList.remove('fade');
-                autoChangeSlides();
+                document.getElementById('fade-screen').classList.remove('fade'); //So buttons can be used
+                if(manualChange) autoChangeSlides(); //Restart autochange timer
             }, fadeAnimDuration);
         }
         function autoChangeSlides(){
             timeoutID = setTimeout(() => {
-                changeSlide(1);
-                autoChangeSlides()
+                changeSlide(1, false);
+                autoChangeSlides();
             }, slideInterval);
-            console.log(timeoutID)
         }
         autoChangeSlides();
     </script>
