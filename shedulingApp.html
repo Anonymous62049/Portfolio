@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./RoadProject/styles.css">
+    <link rel="stylesheet" href="./mobileStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="./Images/Map Images/Full Route.png">
+    <link rel="preload" as="image" href="./Images/Map Images/End Node.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Sydney Harbour Start.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Ramsgate End.png">
+    <link rel="preload" as="image" href="./Images/Map Images/Start Node.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <title>Projects - Scheduling App</title>
+    <style>
+        body{
+            padding: 0 40px 0 40px;
+            max-width: 2000px;
+            margin: auto;
+        }
+        nav{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a class="logo">JaydenLynch</a>
+            <div class="hamburger" onclick="this.parentElement.classList.toggle('switch')">
+                <div class="top line"></div>
+                <div class="middle line"></div>
+                <div class="bottom line"></div>
+            </div>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html#skills">Skills</a></li>
+                <li><a href="./index.html#projects">Projects</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="project-info">
+        <div class="text">
+            <div class="title" style="width: fit-content;">
+                <h2>Scheduling App</h2>
+                <div class="title-underline" style="background-color: var(--orange);"></div>
+            </div>
+            <!--<p class="tag">JavaScript - Python - HTML</p>-->
+            <p>
+                For my High School major work, I implemented a task scheduling and chat application using Windows Forms in the .Net framework. The entire project was coded in C# and an Ubuntu server was used to host the files. 
+                Each visual element was created in Adobe Illustrator.
+                The project had over 5500 lines of code and I received 99% for the entire project including code, UI, UX, documentation and functionality. 
+            </p>
+        </div>
+        <div class="slideshow" style="aspect-ratio: 1.83;">
+            <img id="slideshowImg" src="Images/Scheduling App Images/Calendar with add event.png">
+            <div class="buttons" style="color: gray">
+                <a onclick="changeSlide(-1, true)" id="prev">&#10094;</a>
+                <a onclick="changeSlide(1, true)" id="next">&#10095;</a>
+            </div>
+            <div id="fade-screen"></div>
+        </div>
+    </section>
+    <section class="projects">
+        <div class="title">
+            <span>
+                <h2>My Other Projects</h2>
+                <div class="title-underline" style="background-color: var(--darkblue);"></div>
+            </span>
+            
+        </div>
+        <div class="tile-container">
+            <div class="tile" onclick="window.location='./roadVis.html';">
+                <div class="img-container">
+                    <img src="./Images/Algorithm Vis Project.png">
+                </div>
+                <div class="text">
+                    <h4>Algorithm Visualisation</h4>
+                    <p>- Data Visualisation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="./slideshow.js"></script>
+    <script>
+        const images = [
+            "Images/Scheduling App Images/Calendar with add event.png",
+            "Images/Scheduling App Images/Chat with attached file.png",
+            "Images/Scheduling App Images/Calendar with Edit event.png",
+            "Images/Scheduling App Images/Calendar Task View.png",
+            "Images/Scheduling App Images/Notifications Chat.png", 
+            "Images/Scheduling App Images/Sending Message.png", 
+            "Images/Scheduling App Images/Single Day View.png", 
+            "Images/Scheduling App Images/Upcoming Tasks.png", 
+            "Images/Scheduling App Images/User Manual.png"
+        ];
+    </script>
+</body>
+</html>

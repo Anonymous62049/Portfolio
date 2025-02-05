@@ -281,7 +281,7 @@ section.project-info .text h2{
     text-wrap: nowrap;
 }
 section.project-info .text .title{
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
 }
 section.project-info .text .tag{
     margin-bottom: 10px;
