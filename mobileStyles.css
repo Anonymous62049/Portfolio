@@ -1,8 +1,9 @@
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
     nav{
         top: 0;
         height: 100vh;
         position: fixed !important;
+        left: 0;
     }
     nav > div{
         padding: 15px;
@@ -60,7 +61,21 @@
     h2{
         font-size: 32pt;
     }
+    section.project-info{
+        margin-top: 50px;
+    }
     section.project-info .text{
+        width: 100%;
+    }
+    section.project-info .text .title{
+        max-width: 100%;
+    }
+    section.project-info .text .title h2{
+        font-size: 47pt;
+        text-align: center;
+        text-wrap: wrap;
+    }
+    section.project-info .slideshow{
         width: 100%;
     }
 }

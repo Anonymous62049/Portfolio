@@ -26,6 +26,17 @@
         nav{
             position: relative;
         }
+        @media screen and (max-width: 600px) {
+            body{
+                padding: 25px;
+            }
+            section.projects{
+                padding: 0;
+            }
+            section.projects .tile-container .tile{
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -47,13 +58,13 @@
     </nav>
     <section class="project-info">
         <div class="text">
-            <div class="title" style="width: fit-content;">
+            <div class="title">
                 <h2>Scheduling App</h2>
                 <div class="title-underline" style="background-color: var(--orange);"></div>
             </div>
             <!--<p class="tag">JavaScript - Python - HTML</p>-->
             <p>
-                For my High School major work, I implemented a task scheduling and chat application using Windows Forms in the .Net framework. The entire project was coded in C# and an Ubuntu server was used to host the files. 
+                For my High School major work, I designed and implemented a task scheduling and chat application using Windows Forms in the .Net framework. The entire project was coded in C# and an Ubuntu server was used to host the files. 
                 Each visual element was created in Adobe Illustrator.
                 The project had over 5500 lines of code and I received 99% for the entire project including code, UI, UX, documentation and functionality. 
             </p>

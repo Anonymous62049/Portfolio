@@ -222,7 +222,7 @@ section.projects .tile{
     box-sizing: border-box;
     aspect-ratio: 1.1;
     background-color: transparent;
-    min-width: 400px;
+    min-width: 300px;
 }
 section.projects .tile:hover{
     cursor: pointer;
@@ -281,6 +281,7 @@ section.project-info .text h2{
     text-wrap: nowrap;
 }
 section.project-info .text .title{
+    width: fit-content;
     margin: 0 auto 40px auto;
 }
 section.project-info .text .tag{
@@ -295,7 +296,7 @@ section.project-info .text p{
 }
 section.project-info .slideshow{
     position: relative;
-    width: 100%;
+    width: 90%;
     aspect-ratio: calc(16/9);
     border-radius: 5px;
     box-shadow: rgb(60, 60, 60) 0 0 100px 0px;
