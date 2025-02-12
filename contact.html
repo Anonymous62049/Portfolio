@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./mobileStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Jayden Lynch - Contact</title>
+    <style>
+        nav{
+            position: relative;
+        }
+        section.contact{
+            width: 100%;
+        }
+        section.contact .title{
+            font-size: 50pt;
+            margin: 50px 0 20px 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        section.contact .title h2{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a class="logo">JaydenLynch</a>
+            <div class="hamburger" onclick="this.parentElement.classList.toggle('switch')">
+                <div class="top line"></div>
+                <div class="middle line"></div>
+                <div class="bottom line"></div>
+            </div>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./index.html#skills">Skills</a></li>
+                <li><a href="./index.html#projects">Projects</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="contact">
+        <div class="title" style="width: fit-content;">
+            <h2>Contact</h2>
+            <div class="title-underline"></div>
+        </div>
+    </section>
+</body>
+</html>
