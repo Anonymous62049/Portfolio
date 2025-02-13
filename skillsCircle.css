@@ -44,17 +44,18 @@ section.skills .center-circle .skillText{
     position: relative;
     box-sizing: border-box;
     text-wrap: wrap;
-    width: 46%;
+    width: 52%;
 }
 section.skills .center-circle h3{
     margin: 0;
     padding: 0;
     display: inline-block;
+
 }
 section.skills .center-circle sub{
     font-family: 'Roboto';
     font-weight: bold;
-    font-size: 1.8vw;
+    font-size: 18pt;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -128,7 +129,7 @@ section.skills .tile-container .tile-shadow sub{
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.22s ease-in-out;
-    font-size: 0.8vw;
+    font-size: 8pt;
     margin-top: 7px;
 }
 section.skills .tile-container .tile-shadow .tile{
@@ -286,7 +287,7 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
         font-size: 12pt;
     }
 }
-@media screen and (max-width: 600px){
+/*@media screen and (max-width: 600px){
     :root{
         --backShadowSize: 25vw;
     }
@@ -359,5 +360,22 @@ section.skills .tile-container .tile-shadow .tile[name="php"]::before{
     }
     section.skills .tile-container .tile-shadow[num="4"]{
         order: 3;
+    }
+}*/
+@media screen and (max-width: 1000px) {
+    section.skills .center-circle{
+        width: 50%;
+    }
+    section.skills .tile-container{
+        width: calc(50% + 70px);
+    }
+    section.skills .center-circle .skillText{
+        width: 45%;
+    }
+    section.skills .center-circle .skillText h3{
+        font-size: 4.5vw;
+    }
+    section.skills .center-circle .skillText sub{
+        font-size: 3.5vw;
     }
 }
