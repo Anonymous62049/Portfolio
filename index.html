@@ -15,15 +15,15 @@
     <nav>
         <div>
             <a class="logo">JaydenLynch</a>
-            <div class="hamburger" onclick="this.parentElement.classList.toggle('switch')">
+            <div class="hamburger" onclick="toggleMenu(this.parentElement, this.parentElement.parentElement)">
                 <div class="top line"></div>
                 <div class="middle line"></div>
                 <div class="bottom line"></div>
             </div>
             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./index.html#skills">Skills</a></li>
-                <li><a href="./index.html#projects">Projects</a></li>
+                <li><a href="./index.html" onclick="toggleMenu(this.parentElement.parentElement.parentElement, this.parentElement.parentElement.parentElement.parentElement)">Home</a></li>
+                <li><a href="./index.html#skills" onclick="toggleMenu(this.parentElement.parentElement.parentElement, this.parentElement.parentElement.parentElement.parentElement)">Skills</a></li>
+                <li><a href="./index.html#projects" onclick="toggleMenu(this.parentElement.parentElement.parentElement, this.parentElement.parentElement.parentElement.parentElement)">Projects</a></li>
                 <!--<li><a>Contact</a></li>-->
             </ul>
         </div>
@@ -153,13 +153,20 @@
         function createGradient(value, colour){
             return `conic-gradient(var(--tileColour) ${100 - value}%, ${colour} ${100 - value}%, ${colour} ${value}%)`;
         }
-        $(window).on("load", function () {
-            var urlHash = window.location.href.split("#")[1];
-            if (urlHash &&  $('#' + urlHash).length )
-                $('html,body').animate({
-                    scrollTop: $('#' + urlHash).offset().top
-                }, 4000);
-        });
+        var timeoutId = undefined;
+        function toggleMenu(object1, object2){
+            object1.classList.toggle('switch');
+            if(object2.classList.contains('switch') && !timeoutId) {
+                timeoutId = setTimeout(()=>{
+                    object2.classList.toggle('switch');
+                    timeoutId = undefined;
+                }, 400);
+            }
+            else if(timeoutId){
+                clearTimeout(timeoutId);
+            }
+            else object2.classList.toggle('switch');
+        }
     </script>
 </body>
 </html>
